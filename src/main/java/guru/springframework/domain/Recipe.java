@@ -2,6 +2,7 @@ package guru.springframework.domain;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,4 +26,7 @@ public class Recipe {
 
     @OneToOne(cascade = CascadeType.ALL) //Recipe is the owner of the one-to-one relationship
     private Notes notes;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredient;
 }
